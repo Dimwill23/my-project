@@ -1,0 +1,37 @@
+def calculate_time(distance_km, pace_min_per_km):
+    """Calculate the running time given the distance and pace."""
+    total_minutes = distance_km * pace_min_per_km
+    hours = total_minutes // 60
+    minutes = total_minutes % 60
+    return int(hours), int(minutes)
+
+def calculate_pace(distance_km, time_hours, time_minutes):
+    """Calculate the running pace given the distance and time."""
+    total_minutes = (time_hours * 60) + time_minutes
+    pace = total_minutes / distance_km
+    return pace
+
+def main():
+    print("Running Calculator")
+    print("1. Calculate Time")
+    print("2. Calculate Pace")
+    choice = input("Choose an option (1 or 2): ")
+
+    if choice == '1':
+        distance = float(input("Enter the distance (in kilometers): "))
+        pace = float(input("Enter the pace (minutes per kilometer): "))
+        hours, minutes = calculate_time(distance, pace)
+        print(f"Total time: {hours} hour(s) and {minutes} minute(s).")
+    
+    elif choice == '2':
+        distance = float(input("Enter the distance (in kilometers): "))
+        time_hours = int(input("Enter the time (hours): "))
+        time_minutes = int(input("Enter the time (minutes): "))
+        pace = calculate_pace(distance, time_hours, time_minutes)
+        print(f"Running pace: {pace:.2f} minutes per kilometer.")
+    
+    else:
+        print("Invalid choice. Please select 1 or 2.")
+
+if __name__ == "__main__":
+    main()
